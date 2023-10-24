@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{%block title%}Наши собачки{%endblock%}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+
+        <div>
+            {% for shelter in unique_shelters %}
+            <a id="button" href="{% url 'shelterbydogs' shelter_id=shelter.id %}" class="btn">{{ shelter.name }}</a>
+            {% endfor %}
+        </div>
+
+        {% for item in dogs %}
+        <div class="col-4 mt-4">
+            <div class="card" id="borderCard" style="width: *25rem; height: *500px;">
+                <div class="media">
+                    {% if item.photo %}
+                    <img src="{{ item.photo.url }}" width="220" height="350" class="card-img-top">
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <h5 id="name" class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{ item.description|truncatewords:5 }}</p>
+                    <a id="button" href="{{ item.get_absolute_url }}" class="btn">Читать...</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

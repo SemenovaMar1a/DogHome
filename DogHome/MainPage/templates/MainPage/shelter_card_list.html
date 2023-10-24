@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{%block title%}Приюты{%endblock%}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        {% for item in shelters %}
+        <div class="col-4 mt-4">
+            <div class="card" id="borderCard" style="width: *25rem; height: 430px;">
+                <div class="media">
+                    {% if item.photo %}
+                    <img src="{{ item.photo.url }}"  height="250" width="*397" class="card-img-top">
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <h5 id="name" class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{ item.address }}</p>
+                    <a id="button" href="{{ item.get_absolute_url }}" class="btn">Читать</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
