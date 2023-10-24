@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{%block title%}DogHome| {{ dog_item.name }}{%endblock%}
+
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col md-5">
+            <div class="media">
+                <img id="custom-border" src="{{ shelters.photo.url }}" width="600" height="600">
+            </div>
+        </div>
+
+        <div class="col-5 md-3">
+            <div class="date">
+                <h5 id="name">{{ shelters.name }}</h5>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
