@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div id="carouselExampleAutoplaying" data-bs-ride="carousel">
+    <div id="carousel" class="carousel-inner">
+        <div class="carousel-item active">
+            <img width="1500" height="550" src="https://s0.rbk.ru/v6_top_pics/media/img/2/16/346928865645162.webp">
+        </div>
+        <div class="carousel-item">
+            <img width="1500" height="550"
+                 src="https://s9.stc.all.kpcdn.net/family/wp-content/uploads/2023/02/top-v-luchshie-porody-krupnykh-sobak-960x540-1-960x540.jpg">
+        </div>
+        <div class="carousel-item">
+            <img width="1500" height="550" src="https://s0.rbk.ru/v6_top_pics/media/img/4/47/346915732996474.webp">
+        </div>
+    </div>
+</div>
+
+
+<div id="containerInf" class="container border mt-5">
+    <div class="row">
+        <div class="col-5">
+            <img width="500" height="290" class="img-fluid"
+                 src="https://celes.club/uploads/posts/2021-12/1638823205_1-celes-club-p-mnogo-sobak-zhivotnie-krasivo-foto-1.jpg">
+        </div>
+        <div class="col-6">
+            <h2 id="name">Это информация о сайте</h2>
+
+            <p align="justify"> Привет! Рад приступить к написанию текста о сайте, посвященному нашим любимым
+                пушистым друзьям - собакам. На этом сайте вы сможете найти огромное количество полезной и
+                интересной информации о собаках. Здесь вы сможете узнать о различных породах собак, их
+                характеристиках, особенностях и потребностях. Вы найдете подробные описания пород, их историю и
+                предназначение.
+                Так что, если вы хотите быть в курсе всего, что касается собачьего мира, несомненно посетите этот
+                сайт. Здесь вы найдете всю необходимую информацию и сможете поделиться своими собственными историями о
+                наших верных друзьях.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <div style="text-align: center;">
+        <a id="buttonPtiut" href="{% url 'shelterDog' %}" class="btn">Приюты</a>
+    </div>
+    <div class="row">
+        {% for item in shelter%}
+        <div class="col-4 mt-4">
+            <div class="card" id="borderCard" style="width: *25rem; height: 500px;">
+                <div class="media">
+                    {% if item.photo %}
+                    <img src="{{ item.photo.url }}" width="397" height="300" class="card-img-top">
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <h5 id="name" class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{ item.address }}</p>
+                    <a id="button" href="#" class="btn">Читать</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
