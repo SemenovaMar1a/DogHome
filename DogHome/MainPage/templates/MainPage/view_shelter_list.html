@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{%block title%}DogHome| {{ dog_item.name }}{%endblock%}
+{%block title%}DogHome | {{ shelters.name }}{%endblock%}
 
 
 {% block content %}
@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col md-5">
             <div class="media">
-                <img id="custom-border" src="{{ shelters.photo.url }}" width="600" height="600">
+                <img id="custom-border" src="{{ shelters.photo.url }}" width="600" height="300">
             </div>
         </div>
 
@@ -16,6 +16,25 @@
             <div class="date">
                 <h5 id="name">{{ shelters.name }}</h5>
             </div>
+            <div class="date">
+                <p>Год создания: {{ shelters.year_of_creation|date:"Y"}}</p>
+            </div>
+            <div class="date">
+                <p>Количество животных: {{ shelters.number_of_animals }}</p>
+            </div>
+            <div class="date">
+                <p>Описание: {{ shelters.description }}</p>
+            </div>
+            <div class="date">
+                <p>Адрес: {{shelters.address}} д.</p>
+            </div>
+            <div class="date">
+                <p>Контакты: {{shelters.contacts}}</p>
+            </div>
+            <div class="date">
+                <p>Контактное лицо: {{shelters.contact_person}}</p>
+            </div>
+
 
         </div>
     </div>
