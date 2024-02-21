@@ -14,9 +14,9 @@
                     {% endif %}
                 </div>
                 <div class="card-body">
-                    <h5 id="name" class="card-title">{{ item.name }}</h5>
+                    <h5 class="card-title name">{{ item.name }}</h5>
                     <p class="card-text">{{ item.address }}</p>
-                    <a id="button" href="{{ item.get_absolute_url }}" class="btn">Читать</a>
+                    <a href="{{ item.get_absolute_url }}" class="btn button">Читать</a>
                 </div>
             </div>
         </div>

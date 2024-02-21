@@ -58,6 +58,15 @@ class Shelter(models.Model):
         verbose_name_plural = 'Приюты'
 
 
+class ShelterPhoto(models.Model):
+    shelter = models.ForeignKey(Shelter, related_name='photos', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='photos/shelter/%Y/%m/%d/', verbose_name='Фото', blank=True)
+    description = models.TextField(verbose_name='Описание', blank=True)
+
+    def __str__(self):
+        return self.description
+
+
 class Employee(models.Model):
     name = models.CharField(max_length=100, verbose_name='ФИО')
     job_title = models.CharField(max_length=100, verbose_name='Должность')

@@ -8,13 +8,13 @@
     <div class="row">
         <div class="col md-5">
             <div class="media">
-                <img id="custom-border" src="{{ dog_item.photo.url }}" width="600" height="600">
+                <img class="custom-border" src="{{ dog_item.photo.url }}" width="600" height="600">
             </div>
         </div>
 
         <div class="col-5 md-3">
             <div class="date">
-                <h5 id="name">{{ dog_item.name }}</h5>
+                <h5 class="name">{{ dog_item.name }}</h5>
             </div>
             <div class="date">
                 <p>Пол: {{ dog_item.get_gender_display }}</p>

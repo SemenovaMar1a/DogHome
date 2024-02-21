@@ -2,7 +2,7 @@
 
 
 {% block content %}
-<div id="carouselExampleAutoplaying" data-bs-ride="carousel">
+<div id="carouselExampleAutoplaying" data-bs-ride="carousel" data-bs-interval="1500">
     <div id="carousel" class="carousel-inner">
         <div class="carousel-item active">
             <img width="1500" height="550" src="https://s0.rbk.ru/v6_top_pics/media/img/2/16/346928865645162.webp">
@@ -25,10 +25,9 @@
                  src="https://celes.club/uploads/posts/2021-12/1638823205_1-celes-club-p-mnogo-sobak-zhivotnie-krasivo-foto-1.jpg">
         </div>
         <div class="col-6">
-            <h2 id="name">Это информация о сайте</h2>
+            <h2 class=" name">Это информация о сайте</h2>
 
-            <p align="justify"> Привет! Рад приступить к написанию текста о сайте, посвященному нашим любимым
-                пушистым друзьям - собакам. На этом сайте вы сможете найти огромное количество полезной и
+            <p align="justify"> Привет! На этом сайте вы сможете найти огромное количество полезной и
                 интересной информации о собаках. Здесь вы сможете узнать о различных породах собак, их
                 характеристиках, особенностях и потребностях. Вы найдете подробные описания пород, их историю и
                 предназначение.
@@ -55,9 +54,9 @@
                     {% endif %}
                 </div>
                 <div class="card-body">
-                    <h5 id="name" class="card-title">{{ item.name }}</h5>
+                    <h5 class="card-title name">{{ item.name }}</h5>
                     <p class="card-text">{{ item.address }}</p>
-                    <a id="button" href="#" class="btn">Читать</a>
+                    <a href="{{ item.get_absolute_url }}" class="btn button">Читать</a>
                 </div>
             </div>
         </div>

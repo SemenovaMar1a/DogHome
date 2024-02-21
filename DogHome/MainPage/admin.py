@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Dog, Shelter, Breed, Employee, Health
+from .models import *
 
 
 class DogAdmin(admin.ModelAdmin):
@@ -20,6 +20,13 @@ class ShelterAdmin(admin.ModelAdmin):
     list_filter = ('name',)
 
 
+class ShelterPhotoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'shelter', 'image', 'description')
+    list_display_links = ('id', 'shelter')
+    list_filter = ('shelter',)
+
+
+admin.site.register(ShelterPhoto, ShelterPhotoAdmin)
 admin.site.register(Dog, DogAdmin)
 admin.site.register(Shelter, ShelterAdmin)
 admin.site.register(Breed)

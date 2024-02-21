@@ -7,11 +7,29 @@
 <div class="container mt-5">
     <div class="row">
 
-        <div>
-            {% for shelter in unique_shelters %}
-            <a id="button" href="{% url 'shelterbydogs' shelter_id=shelter.id %}" class="btn">{{ shelter.name }}</a>
-            {% endfor %}
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'dogCards' %}" class="btn button">Все</a>
+                    {% for shelter in unique_shelters %}
+                        <a href="{% url 'shelterbydogs' shelter_id=shelter.id %}" class="btn button">{{ shelter.name }}</a>
+                    {% endfor %}
+                </div>
+                <div class="col-md-4">
+                    <form action="{% url 'dogCards' %}" method="get" class="d-flex">
+                        <input name="q" type="text" class="form-control me-2" placeholder="Имя собаки">
+                    </form>
+                </div>
+            </div>
         </div>
+
+
+        <h2 class="name">
+            {% if selected_shelter %}
+            {{ selected_shelter.name }}
+            {% endif %}
+        </h2>
+
 
         {% for item in dogs %}
         <div class="col-4 mt-4">
@@ -22,9 +40,9 @@
                     {% endif %}
                 </div>
                 <div class="card-body">
-                    <h5 id="name" class="card-title">{{ item.name }}</h5>
+                    <h5 class="card-title name">{{ item.name }}</h5>
                     <p class="card-text">{{ item.description|truncatewords:5 }}</p>
-                    <a id="button" href="{{ item.get_absolute_url }}" class="btn">Читать...</a>
+                    <a href="{{ item.get_absolute_url }}" class="btn button">Читать...</a>
                 </div>
             </div>
         </div>

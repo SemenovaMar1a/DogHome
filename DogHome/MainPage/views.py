@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
-
-from .models import Shelter, Dog
+from django.db.models import Q
+from .models import Shelter, Dog, ShelterPhoto
 
 
 class Main(ListView):
@@ -18,13 +18,22 @@ class DogCard(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['unique_shelters'] = Shelter.objects.all()
+        shelter_id = self.kwargs.get('shelter_id')
+        if shelter_id:
+            selected_shelter = get_object_or_404(Shelter, id=shelter_id)
+            context['selected_shelter'] = selected_shelter
         return context
 
     def get_queryset(self):
         queryset = super().get_queryset()
+
         shelter_id = self.kwargs.get('shelter_id')
         if shelter_id:
             queryset = queryset.filter(shelter_id=shelter_id)
+
+        query = self.request.GET.get('q')
+        if query:
+            queryset = Dog.objects.filter(Q(name__icontains=query))
         return queryset
 
 
@@ -34,36 +43,10 @@ class ShelterCard(ListView):
     context_object_name = 'shelters'
 
 
-# def index(request):
-#     cart = Shelter.objects.all()
-#     return render(request, 'MainPage/home_main_list.html', {'cart': cart})
-
 class ViewDog(DetailView):
     model = Dog
     context_object_name = 'dog_item'
     template_name = 'MainPage/view_dog_list.html'
-
-
-class ShelterByDogs(ListView):
-    model = Dog
-    template_name = 'MainPage/shelter_id_list.html'
-    context_object_name = 'dogs'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['unique_shelters'] = Shelter.objects.all()
-        shelter_id = self.kwargs.get('shelter_id')
-        if shelter_id:
-            selected_shelter = get_object_or_404(Shelter, id=shelter_id)
-            context['selected_shelter'] = selected_shelter
-        return context
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        shelter_id = self.kwargs.get('shelter_id')
-        if shelter_id:
-            queryset = queryset.filter(shelter_id=shelter_id)
-        return queryset
 
 
 class ViewShelter(DetailView):
@@ -71,3 +54,9 @@ class ViewShelter(DetailView):
     template_name = 'MainPage/view_shelter_list.html'
     context_object_name = 'shelters'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        shelter_id = self.kwargs.get('pk')
+        shelter_photos = ShelterPhoto.objects.filter(shelter_id=shelter_id)
+        context['shelter_photos'] = shelter_photos
+        return context

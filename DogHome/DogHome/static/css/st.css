@@ -32,7 +32,7 @@ p{
     color: #5c341e;
 }
 
-#name{
+.name{
     font-family: Courier, monospace;
     font-size: 35px;
     font-weight: bold;
@@ -44,13 +44,13 @@ p{
     border-color: #9c674a;
 }
 
-#button {
+.button {
     background-color: #9c674a;
     color: #5c341e;
     padding: 10px 20px;
 }
 
-#button:hover {
+.button:hover {
     background-color: #d29369;
 }
 
@@ -77,10 +77,10 @@ p{
     height: auto;
     border: 2px solid #9c674a;
     text-align: left;
-    border-radius: 10px
+    border-radius: 0.4em
 }
 
-#custom-border {
+.custom-border {
     border: 5px solid #9c674a;
     border-radius: 10px;
 }
@@ -102,4 +102,9 @@ p{
     font-size: 50px;
     font-weight: bold;
     color: #5c341e;
+}
+
+.nav-item:hover {
+        background-color: #d29369; /* Цвет фона при наведении */
+        border-radius: 5em;
 }

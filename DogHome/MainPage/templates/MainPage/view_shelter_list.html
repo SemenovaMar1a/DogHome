@@ -4,38 +4,50 @@
 
 
 {% block content %}
-<div class="container mt-5">
-    <div class="row">
-        <div class="col md-5">
-            <div class="media">
-                <img id="custom-border" src="{{ shelters.photo.url }}" width="600" height="300">
+<div class="container mt-4">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <div class="media">
+                        <img src="{{ shelters.photo.url }}" width="600" height="300" class="img-fluid ml-3 custom-border">
+                    </div>
+                </div>
+
+                {% for photo in shelter_photos %}
+                    <div class="col-md-4">
+                        <div class="photo">
+                            <img src="{{ photo.image.url }}" width="200" height="200" class="img-fluid mt-2 custom-border">
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
 
-        <div class="col-5 md-3">
-            <div class="date">
-                <h5 id="name">{{ shelters.name }}</h5>
+        <div class="col-md-6">
+            <div class="col-12 md-3">
+                <div class="date">
+                    <h5 class="name">{{ shelters.name }}</h5>
+                </div>
+                <div class="date">
+                    <p>Год создания: {{ shelters.year_of_creation|date:"Y"}}</p>
+                </div>
+                <div class="date">
+                    <p>Количество животных: {{ shelters.number_of_animals }}</p>
+                </div>
+                <div class="date">
+                    <p>Описание: {{ shelters.description }}</p>
+                </div>
+                <div class="date">
+                    <p>Адрес: {{shelters.address}} д.</p>
+                </div>
+                <div class="date">
+                    <p>Контакты: {{shelters.contacts}}</p>
+                </div>
+                <div class="date">
+                    <p>Контактное лицо: {{shelters.contact_person}}</p>
+                </div>
             </div>
-            <div class="date">
-                <p>Год создания: {{ shelters.year_of_creation|date:"Y"}}</p>
-            </div>
-            <div class="date">
-                <p>Количество животных: {{ shelters.number_of_animals }}</p>
-            </div>
-            <div class="date">
-                <p>Описание: {{ shelters.description }}</p>
-            </div>
-            <div class="date">
-                <p>Адрес: {{shelters.address}} д.</p>
-            </div>
-            <div class="date">
-                <p>Контакты: {{shelters.contacts}}</p>
-            </div>
-            <div class="date">
-                <p>Контактное лицо: {{shelters.contact_person}}</p>
-            </div>
-
-
         </div>
     </div>
 </div>
