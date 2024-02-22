@@ -21,11 +21,11 @@
 <div id="containerInf" class="container border mt-5">
     <div class="row">
         <div class="col-5">
-            <img width="500" height="290" class="img-fluid"
+            <img width="500" height="290" class="img-fluid" style="border-radius: 10em; margin-top:2.5em"
                  src="https://celes.club/uploads/posts/2021-12/1638823205_1-celes-club-p-mnogo-sobak-zhivotnie-krasivo-foto-1.jpg">
         </div>
         <div class="col-6">
-            <h2 class=" name">Это информация о сайте</h2>
+            <h2 class="name">Это информация о сайте</h2>
 
             <p align="justify"> Привет! На этом сайте вы сможете найти огромное количество полезной и
                 интересной информации о собаках. Здесь вы сможете узнать о различных породах собак, их
@@ -42,7 +42,7 @@
 
 <div class="container mt-5">
     <div style="text-align: center;">
-        <a id="buttonPtiut" href="{% url 'shelterDog' %}" class="btn">Приюты</a>
+        <a id="buttonShelter" href="{% url 'shelterDog' %}" class="btn">Приюты</a>
     </div>
     <div class="row">
         {% for item in shelter%}

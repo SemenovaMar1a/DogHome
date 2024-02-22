@@ -4,13 +4,19 @@
 
 {% block content %}
 
+<div style="text-align:center">
+    <h2 class="title">
+        Собаки
+    </h2>
+</div>
+
 <div class="container mt-5">
     <div class="row">
-
         <div class="container">
             <div class="row">
                 <div class="col">
                     <a href="{% url 'dogCards' %}" class="btn button">Все</a>
+
                     {% for shelter in unique_shelters %}
                         <a href="{% url 'shelterbydogs' shelter_id=shelter.id %}" class="btn button">{{ shelter.name }}</a>
                     {% endfor %}

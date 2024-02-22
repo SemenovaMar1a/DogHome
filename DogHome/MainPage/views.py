@@ -42,6 +42,13 @@ class ShelterCard(ListView):
     template_name = 'MainPage/shelter_card_list.html'
     context_object_name = 'shelters'
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.request.GET.get('q')
+        if query:
+            queryset = Shelter.objects.filter(Q(name__icontains=query))
+        return queryset
+
 
 class ViewDog(DetailView):
     model = Dog

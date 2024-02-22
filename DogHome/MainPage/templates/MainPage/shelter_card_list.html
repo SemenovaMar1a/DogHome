@@ -3,7 +3,23 @@
 {%block title%}Приюты{%endblock%}
 
 {% block content %}
-<div class="container mt-5">
+<div style="text-align:center">
+    <h2 class="title">
+        Приюты
+    </h2>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form action="{% url 'shelterDog' %}" method="get" class="d-flex">
+                <input name="q" type="text" class="form-control me-2" placeholder="Название приюта">
+                <a href="{% url 'shelterDog' %}" class="btn button">Все</a>
+            </form>
+        </div>
+    </div>
+
     <div class="row">
         {% for item in shelters %}
         <div class="col-4 mt-4">

@@ -1,110 +1,113 @@
+/* Фоновое изображение для всего тела страницы */
 body{
        background-image: url(../images/snapedit_1696796426664.png);
        background-size: cover;
        background-repeat: no-repeat;
     }
 
+/* Стили для контейнера с информацией */
 #containerInf {
     background-color: rgba(236,148,75, 0.5);
-    padding: 20px;
-    border-radius: 10px
+    padding: 1em;
+    border-radius: 10em
 }
 
+/* Стили для навбара */
 #nav{
     background-color: #9c674a;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
     font-family: Courier, monospace;
-    font-size: 20px;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
-#carousel{
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+/* Стили при наведении на навбар */
+.nav-item:hover {
+    background-color: #d29369;
+    border-radius: 5em;
 }
 
+/* Стили для карусели */
+#carousel{
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+}
 
+/* Общие стили для текста */
 p{
     font-family: Courier, monospace;
-    font-size: 20px;
+    font-size: 1.25em;
     font-weight: bold;
     color: #5c341e;
 }
 
+/* Стили для заголовков */
 .name{
     font-family: Courier, monospace;
-    font-size: 35px;
+    font-size: 2em;
     font-weight: bold;
     color: #5c341e;
 }
 
+/* Стили для рамки карточек */
 #borderCard{
     background-color: rgba(236,148,75, 0.5);
     border-color: #9c674a;
 }
 
+/* Стили для кнопок */
 .button {
     background-color: #9c674a;
     color: #5c341e;
-    padding: 10px 20px;
+    padding: 0.7em 1em;
 }
 
+/* Стили при нажатии на кнопку */
 .button:hover {
     background-color: #d29369;
 }
 
-#dog-home{
-    font-size: 35px;
-}
-
-#buttonPtiut{
+/* Стили для кнопки Приюты на главной странице */
+#buttonShelter{
     background-color: #d29369;
     color: #5c341e;
-    padding: 10px 20px;
-    width: 250px;
-    height: 70px;
+    padding: 0.25em;
+    width: 7em;
+    height: 2em;
     font-family: Courier, monospace;
-    font-size: 35px;
+    font-size: 2.2em;
     font-weight: bold;
 }
 
+/* Стили для данных */
 .date{
     background-color: rgba(236,148,75, 0.5);
-    margin-bottom: 4px;
+    margin-bottom: 0.1em;
     padding: 10px;
-    width: 500px;
+    width: 32em;
     height: auto;
-    border: 2px solid #9c674a;
+    border: 0.1em solid #9c674a;
     text-align: left;
     border-radius: 0.4em
 }
 
+/* Стили для рамок картинок */
 .custom-border {
-    border: 5px solid #9c674a;
+    border: 0.5em solid #9c674a;
     border-radius: 10px;
 }
 
-#div{
-    line-height: 5; /* Установите желаемое значение, например, 1 для минимального интервала */
-}
-
-.fillterButton{
-    background-color: #9c674a;
+/* Стили для названия раздела */
+.title{
+    background-color: rgba(236,148,75, 0.5);
     color: #5c341e;
-    width: 100px;
-    height: 100px;
-
-}
-
-#nazvanie{
+    text-align: center;
+    margin-left: 4em;
+    margin-right: 4em;
+    margin-top: 0.5em;
+    border-radius: 5em;
     font-family: Courier, monospace;
-    font-size: 50px;
+    font-size: 5em;
     font-weight: bold;
-    color: #5c341e;
-}
-
-.nav-item:hover {
-        background-color: #d29369; /* Цвет фона при наведении */
-        border-radius: 5em;
 }
