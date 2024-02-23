@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.db.models import Q
-from .models import Shelter, Dog, ShelterPhoto
+from .models import Shelter, Dog, ShelterPhoto, Employee
 
 
 class Main(ListView):
@@ -67,3 +67,10 @@ class ViewShelter(DetailView):
         shelter_photos = ShelterPhoto.objects.filter(shelter_id=shelter_id)
         context['shelter_photos'] = shelter_photos
         return context
+
+
+class HelpForShelter(ListView):
+    model = Employee
+    template_name = 'MainPage/help_for_shelters_list.html'
+    context_object_name = 'employee'
+

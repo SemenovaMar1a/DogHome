@@ -10,4 +10,5 @@ urlpatterns = [
     path('dog_cards/<int:pk>', ViewDog.as_view(), name='viewdog'),
     path('dog_cards/filter/<int:shelter_id>', DogCard.as_view(), name='shelterbydogs'),
     path('shelter/<int:pk>', ViewShelter.as_view(), name='viewshelter'),
+    path('help_for_shelters/', HelpForShelter.as_view(), name='helpforshelters')
 ]

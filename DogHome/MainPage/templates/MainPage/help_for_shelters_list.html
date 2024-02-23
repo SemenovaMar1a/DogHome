@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{%block title%}Помощь приютам{%endblock%}
+
+{% block content %}
+
+
+<div id="containerInfHelp" class="container border mt-2">
+    <div style="text-align: center; border-radius: 1em">
+        <img width="700" class="img-fluid" style="border-radius: 1em; padding: 0.5em; margin-top: 1em"
+                 src="https://img.baba-blog.com/2024/02/what-are-top-dog-products-to-stock-in-2022_00.jpg?x-oss-process=style%2Ffull">
+    </div>
+    <h2 class="name" style="text-align: center; padding: 0.25em">Как помочь животным?</h2>
+    <ul style=" text-align: justify;">
+        <li style="font-size: 1.2em"><strong style="font-size: 1.5em">Волонтёрство:</strong> Проведите время в приюте, помогая с уходом за животными, выгулом собак и уборкой клеток.</li>
+        <li style="font-size: 1.2em"><strong style="font-size: 1.5em">Пожертвования:</strong> Пожертвуйте финансовые средства или материальные ресурсы для поддержки приюта.</li>
+        <li style="font-size: 1.2em"><strong style="font-size: 1.5em">Усыновление:</strong> Рассмотрите возможность усыновления животного из приюта.</li>
+        <li style="font-size: 1.2em"><strong style="font-size: 1.5em">Распространение информации:</strong> Помогите распространить информацию о приюте и животных, нуждающихся в доме.</li>
+        <li style="font-size: 1.2em"><strong style="font-size: 1.5em">Подарки в приют:</strong> Подарите приюту необходимые предметы для ухода за животными.</li>
+        <li style="font-size: 1.2em"><strong style="font-size: 1.5em">Обучение и образование:</strong> Участвуйте в образовательных мероприятиях приюта.</li>
+        <li style="font-size: 1.2em"><strong style="font-size: 1.5em">Профессиональные услуги:</strong> Предложите свою помощь приюту, если у вас есть профессиональные навыки, которые могут быть полезны.</li>
+        <li style="font-size: 1.2em"><strong style="font-size: 1.5em">Поддержка приютов:</strong> Помогайте приютам с финансовым планированием, фондовыми мероприятиями и развитием сообщества.</li>
+    </ul>
+</div>
+<div style="text-align:center">
+    <h2 class="title">
+        С кем можно связаться?
+    </h2>
+</div>
+<div class="row">
+    {% for item in employee %}
+    <div class="col-md-4 mt-4">
+        <div class="card" id="borderCard" style="width: *em; height: 70em;">
+            <div class="media">
+                {% if item.photo %}
+                <img src="{{ item.photo.url }}" width="397" height="500" class="card-img-top">
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title name">{{ item.name }}</h5>
+                <p class="card-text">{{ item.description }}</p>
+                <a href="{% url 'shelterDog' %}" style="width: 24em; position: absolute; bottom: 10px;" class="btn button">{{ item.shelter.name }}</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{%endblock%}
