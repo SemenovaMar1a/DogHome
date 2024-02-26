@@ -43,6 +43,8 @@
                 <div class="media">
                     {% if item.photo %}
                     <img src="{{ item.photo.url }}" width="220" height="350" class="card-img-top">
+                    {% else %}
+                    <img src="https://images.freeimages.com/images/large-previews/349/free-background-blur-1636598.jpg" width="220" height="350" class="card-img-top">
                     {% endif %}
                 </div>
                 <div class="card-body">

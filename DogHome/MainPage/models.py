@@ -1,5 +1,17 @@
 from django.db import models
 from django.urls import reverse
+from PIL import Image
+from django.core.exceptions import ValidationError
+
+
+def validate_image_size_Dog(value):
+    image = Image.open(value)
+    width, height = image.size
+    mix_width = 640
+    mix_height = 640
+
+    if width < mix_width or height < mix_height:
+        raise ValidationError(f"Минимальный размеры изображения: {mix_width}x{mix_height} пикселей.")
 
 
 class Dog(models.Model):
@@ -24,7 +36,8 @@ class Dog(models.Model):
     health = models.ForeignKey('Health', on_delete=models.SET_NULL, verbose_name='Здоровье', blank=True, null=True,
                                default=None)
     shelter = models.ForeignKey('Shelter', on_delete=models.PROTECT, verbose_name='Приют', blank=True)
-    photo = models.ImageField(upload_to='photos/dog/%Y/%m/%d/', verbose_name='Фото', blank=True)
+    photo = models.ImageField(upload_to='photos/dog/%Y/%m/%d/', verbose_name='Фото', blank=True,
+                              validators=[validate_image_size_Dog])
 
     def get_absolute_url(self):
         return reverse('viewdog', kwargs={"pk": self.pk})
@@ -37,6 +50,16 @@ class Dog(models.Model):
         verbose_name_plural = 'Собаки'
 
 
+def validate_image_size_Shelter(value):
+    image = Image.open(value)
+    width, height = image.size
+    mix_width = 550
+    mix_height = 360
+
+    if width < mix_width or height < mix_height:
+        raise ValidationError(f"Минимальный размеры изображения: {mix_width}x{mix_height} пикселей.")
+
+
 class Shelter(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название')
     year_of_creation = models.DateField(verbose_name='Год создания', blank=True)
@@ -45,7 +68,8 @@ class Shelter(models.Model):
     address = models.TextField(verbose_name='Адрес')
     contacts = models.CharField(max_length=11, verbose_name='Контакты')
     contact_person = models.CharField(max_length=100, verbose_name='Контактное лицо')
-    photo = models.ImageField(upload_to='photos/shelter/%Y/%m/%d/', verbose_name='Фото', blank=True)
+    photo = models.ImageField(upload_to='photos/shelter/%Y/%m/%d/', verbose_name='Фото', blank=True,
+                              validators=[validate_image_size_Shelter])
 
     def get_absolute_url(self):
         return reverse('viewshelter', kwargs={"pk": self.pk})
@@ -67,12 +91,24 @@ class ShelterPhoto(models.Model):
         return self.description
 
 
+def validate_image_size_Employee(value):
+    image = Image.open(value)
+    width, height = image.size
+    mix_width = 450
+    mix_height = 600
+
+    if width < mix_width or height < mix_height:
+        raise ValidationError(f"Минимальный размеры изображения: {mix_width}x{mix_height} пикселей.")
+
+
 class Employee(models.Model):
     name = models.CharField(max_length=100, verbose_name='ФИО')
     job_title = models.CharField(max_length=100, verbose_name='Должность')
     description = models.TextField(blank=True, verbose_name='Описание')
-    photo = models.ImageField(upload_to='photos/employee/%Y/%m/%d/', verbose_name='Фото', blank=True)
-    shelter = models.ForeignKey(Shelter, related_name='job', on_delete=models.PROTECT, verbose_name='Место работы', blank=True, null=True)
+    photo = models.ImageField(upload_to='photos/employee/%Y/%m/%d/', verbose_name='Фото', blank=True,
+                              validators=[validate_image_size_Employee])
+    shelter = models.ForeignKey(Shelter, related_name='job', on_delete=models.PROTECT, verbose_name='Место работы',
+                                blank=True, null=True)
 
     def __str__(self):
         return self.name

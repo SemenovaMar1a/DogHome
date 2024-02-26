@@ -1,5 +1,128 @@
+/* Фоновое изображение для всего тела страницы */
 body{
-       background-image: url(../images/photo_2023-10-08_19-29-56.jpg);
+       background-image: url(../images/snapedit_1696796426664.png);
        background-size: cover;
        background-repeat: no-repeat;
     }
+
+/* Стили для контейнера с информацией */
+#containerInf {
+    background-color: rgba(156,103,74, 0.65);
+    padding: 2em;
+    border-radius: 10em
+}
+
+/* Стили для контейнера с информацией на странице помощи*/
+#containerInfHelp {
+    background-color: rgba(156,103,74, 0.65);
+    border-radius: 4em;
+    width: 50em;
+}
+
+/* Стили для навбара */
+#nav{
+    background-color: #9c674a;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    font-family: Courier, monospace;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Стили при наведении на навбар */
+.nav-item:hover {
+    background-color: #d29369;
+    border-radius: 5em;
+}
+
+/* Стили для карусели */
+#carousel{
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+}
+
+/* Общие стили для текста */
+p{
+    font-family: Courier, monospace;
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #3a2113;
+}
+
+/* Стили для списка */
+ul{
+    font-family: Courier, monospace;
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #3a2113;
+}
+
+/* Стили для заголовков */
+.name{
+    font-family: Courier, monospace;
+    font-size: 2em;
+    font-weight: bold;
+    color: #3a2113;
+}
+
+/* Стили для рамки карточек */
+#borderCard{
+    background-color: rgba(236,148,75, 0.5);
+    border-color: #9c674a;
+}
+
+/* Стили для кнопок */
+.button {
+    background-color: #9c674a;
+    color: #5c341e;
+    padding: 0.7em 1em;
+}
+
+/* Стили при нажатии на кнопку */
+.button:hover {
+    background-color: #d29369;
+}
+
+/* Стили для кнопки Приюты на главной странице */
+#buttonShelter{
+    background-color: #d29369;
+    color: #5c341e;
+    padding: 0.25em;
+    width: 7em;
+    height: 2em;
+    font-family: Courier, monospace;
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+/* Стили для данных */
+.date{
+    background-color: rgba(236,148,75, 0.5);
+    margin-bottom: 0.1em;
+    padding: 10px;
+    width: 32em;
+    height: auto;
+    border: 0.1em solid #9c674a;
+    text-align: left;
+    border-radius: 0.4em
+}
+
+/* Стили для рамок картинок */
+.custom-border {
+    border: 0.5em solid #9c674a;
+    border-radius: 10px;
+}
+
+/* Стили для названия раздела */
+.title{
+    background-color: rgba(236,148,75, 0.5);
+    color: #5c341e;
+    text-align: center;
+    margin-left: 4em;
+    margin-right: 4em;
+    margin-top: 0.5em;
+    border-radius: 5em;
+    font-family: Courier, monospace;
+    font-size: 5em;
+    font-weight: bold;
+}

@@ -34,7 +34,7 @@ admin.site.register(ShelterPhoto, ShelterPhotoAdmin)
 admin.site.register(Dog, DogAdmin)
 admin.site.register(Shelter, ShelterAdmin)
 admin.site.register(Breed)
-admin.site.register(Employee)
+admin.site.register(Employee, EmployeeAdmin)
 admin.site.register(Health)
 
 

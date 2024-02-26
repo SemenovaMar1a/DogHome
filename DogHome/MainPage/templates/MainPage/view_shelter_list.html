@@ -15,11 +15,9 @@
                 </div>
 
                 {% for photo in shelter_photos %}
-                    <div class="col-md-4">
-                        <div class="photo">
-                            <img src="{{ photo.image.url }}" width="200" height="200" class="img-fluid mt-2 custom-border">
-                        </div>
-                    </div>
+                <div class="col-md-4">
+                    <img  style="width: 12em; height: 8em;" src="{{ photo.image.url }}" class="img-thumbnail">
+                </div>
                 {% endfor %}
             </div>
         </div>
@@ -33,7 +31,9 @@
                     <p>Год создания: {{ shelters.year_of_creation|date:"Y"}}</p>
                 </div>
                 <div class="date">
-                    <p>Количество животных: {{ shelters.number_of_animals }}</p>
+                    <a href="{% url 'shelterbydogs' shelters.id %}">
+                        Количество животных: {{ shelters.number_of_animals }}
+                    </a>
                 </div>
                 <div class="date">
                     <p>Описание: {{ shelters.description }}</p>

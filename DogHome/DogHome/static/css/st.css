@@ -49,6 +49,20 @@ p{
     color: #3a2113;
 }
 
+/* Общие стили для ссылки */
+a{
+    font-family: Courier, monospace;
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #3a2113;
+    text-decoration: none
+}
+
+a:hover {
+    background-color: #d29369;
+    border-radius: 0.2em;
+}
+
 /* Стили для списка */
 ul{
     font-family: Courier, monospace;
