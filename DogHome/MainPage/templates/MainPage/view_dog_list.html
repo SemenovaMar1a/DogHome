@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col md-5">
             <div class="media">
-                {% if item.photo %}
+                {% if dog_item.photo %}
                 <img class="custom-border" src="{{ dog_item.photo.url }}" width="600" height="600">
                 {% else %}
                 <img class="custom-border" src="https://images.freeimages.com/images/large-previews/349/free-background-blur-1636598.jpg" width="600" height="600">
@@ -48,7 +48,9 @@
                 <p>Здоровье: {{ dog_item.health }}</p>
             </div>
             <div class="date">
-                <p>Приют: {{ dog_item.shelter }}</p>
+                <a href="{% url 'viewshelter' dog_item.shelter.id %}">
+                    Приют: {{ dog_item.shelter }}
+                </a>
             </div>
         </div>
     </div>

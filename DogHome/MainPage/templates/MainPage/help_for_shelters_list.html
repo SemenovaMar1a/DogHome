@@ -39,7 +39,11 @@
             <div class="card-body">
                 <h5 class="card-title name">{{ item.name }}</h5>
                 <p class="card-text">{{ item.description }}</p>
-                <a href="{% url 'shelterDog' %}" style="width: 24em; position: absolute; bottom: 10px;" class="btn button">{{ item.shelter.name }}</a>
+                {% if item.shelter %}
+                    <a href="{% url 'viewshelter' item.shelter.id %}" style="width: 24em; position: absolute; bottom: 10px;" class="btn button">
+                        {{ item.shelter.name }}
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>

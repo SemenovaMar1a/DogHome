@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.db.models import Q
@@ -55,6 +56,17 @@ class ViewDog(DetailView):
     context_object_name = 'dog_item'
     template_name = 'MainPage/view_dog_list.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        try:
+            dog = self.get_object()
+            context['shelter'] = dog.shelter
+        except Dog.DoesNotExist:
+            raise Http404("Dog does not exist")
+
+        return context
+
 
 class ViewShelter(DetailView):
     model = Shelter
@@ -73,4 +85,19 @@ class HelpForShelter(ListView):
     model = Employee
     template_name = 'MainPage/help_for_shelters_list.html'
     context_object_name = 'employee'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        try:
+            employees = self.get_queryset()
+            if employees.exists():
+                employee_instance = employees[0]
+                context['shelter'] = employee_instance.shelter
+            else:
+                raise Http404("No employees found")
+        except Employee.DoesNotExist:
+            raise Http404("Employee does not exist")
+
+        return context
 
