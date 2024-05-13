@@ -11,4 +11,7 @@
     <option name="format" value="GOOGLE" />
     <option name="myDocStringFormat" value="Google" />
   </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="d6861ad2-776f-4852-9130-03b5e332d73c" />
+  </component>
 </module>

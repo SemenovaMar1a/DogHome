@@ -16,6 +16,7 @@ class DogCard(ListView):
     template_name = 'MainPage/dog_card_list.html'
     context_object_name = 'dogs'
 
+    # Метод для вывода кнопок приютов
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['unique_shelters'] = Shelter.objects.all()
@@ -56,48 +57,14 @@ class ViewDog(DetailView):
     context_object_name = 'dog_item'
     template_name = 'MainPage/view_dog_list.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        try:
-            dog = self.get_object()
-            context['shelter'] = dog.shelter
-        except Dog.DoesNotExist:
-            raise Http404("Dog does not exist")
-
-        return context
-
 
 class ViewShelter(DetailView):
     model = Shelter
     template_name = 'MainPage/view_shelter_list.html'
     context_object_name = 'shelters'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        shelter_id = self.kwargs.get('pk')
-        shelter_photos = ShelterPhoto.objects.filter(shelter_id=shelter_id)
-        context['shelter_photos'] = shelter_photos
-        return context
-
 
 class HelpForShelter(ListView):
     model = Employee
     template_name = 'MainPage/help_for_shelters_list.html'
     context_object_name = 'employee'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        try:
-            employees = self.get_queryset()
-            if employees.exists():
-                employee_instance = employees[0]
-                context['shelter'] = employee_instance.shelter
-            else:
-                raise Http404("No employees found")
-        except Employee.DoesNotExist:
-            raise Http404("Employee does not exist")
-
-        return context
-

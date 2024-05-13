@@ -87,6 +87,10 @@ class ShelterPhoto(models.Model):
     image = models.ImageField(upload_to='photos/shelter/%Y/%m/%d/', verbose_name='Фото', blank=True)
     description = models.TextField(verbose_name='Описание', blank=True)
 
+    class Meta:
+        verbose_name = 'Фото приютов'
+        verbose_name_plural = 'Фото приютов'
+
     def __str__(self):
         return self.description
 
